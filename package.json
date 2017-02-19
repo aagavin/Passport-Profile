@@ -6,8 +6,8 @@
     "name": "Aaron Fernandes 300773526"
   },
   "scripts": {
-    "start": "node ./server/bin/www",
-    "watch": "nodemon ./server/bin/www"
+    "start": "node server.js",
+    "watch": "nodemon server.js"
   },
   "dependencies": {
     "@types/passport": "^0.3.3",
