@@ -1,0 +1,28 @@
+<%- include ./partials/header.ejs %>
+
+<h1>Contact Me</h1>
+
+<div>
+<address>
+	127 Dot Zero Street,<br>
+	Toronto, ON,<br>
+	CA<br>
+</address>
+</div>
+
+<br>
+<h2>EMAIL: </h2>
+<p>Contact me via email:</p>
+
+
+
+<%if (messageAvailable) { %>
+<div><%= message %></div>
+
+
+<% } else{ %>  
+<div id="contactform"></div>
+<% } %>
+
+
+<%- include ./partials/footer.ejs %>

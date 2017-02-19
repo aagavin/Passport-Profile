@@ -1,0 +1,12 @@
+<%- include ./partials/header.ejs %>
+
+<h1>Services</h1>
+
+<% services.forEach(function(service) { %>
+
+	<h2><%= service.title %></h2>
+	<p><%= service.about %></p>
+<% }); %>
+
+<p>... and many more</p>
+<%- include ./partials/footer.ejs %>
