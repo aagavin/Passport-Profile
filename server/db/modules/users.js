@@ -5,21 +5,21 @@
 
   This file sets up database information
 */
-
-let Schema = require('mongoose').Schema;
+let mongoose = require('mongoose');
+let Schema = mongoose.Schema;
 let passportLocalMongoose = require('passport-local-mongoose');
 
 
 let UserSchema = Schema(
   {
     username: {
-      type: string,
+      type: String,
       default: '',
       trim: true,
       required: 'username is required'
     },
     email: {
-      type: string,
+      type: String,
       default: '',
       trim: true,
       required: 'email is required'
