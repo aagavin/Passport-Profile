@@ -4,6 +4,12 @@ let favicon = require('serve-favicon');
 let logger = require('morgan');
 let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
+// modules for auth
+let session = require('express-session');
+let passport = require('passport');
+let passportLocal = require('passport-local');
+let LocalStrategy = passportLocal.Strategy;
+let flash = require('connect-flash'); // displays errors / login messages
 
 let index = require('./routes/index');
 let about = require('./routes/about');
@@ -26,12 +32,31 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../client/public')));
 
+// setup session
+app.use(session({
+  secret: "SomeSecret",
+  saveUninitialized: true,
+  resave: true
+}));
+
+// initialize passport and flash
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/', index);
 app.use('/about', about);
 app.use('/contact', contact);
 app.use('/projects', projects);
 app.use('/services', services);
 app.use('/docs', docs);
+
+// Passport User Configuration
+let UserModel = require('./db/modules/users');
+let User = UserModel.User; // alias for the User Model - User object
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
