@@ -17,7 +17,7 @@ let contact = require('./routes/contact');
 let projects = require('./routes/projects');
 let services = require('./routes/services');
 let docs = require('./routes/docs');
-
+let businessList = require('./routes/businessContactsList');
 let app = express();
 
 // view engine setup
@@ -50,6 +50,7 @@ app.use('/contact', contact);
 app.use('/projects', projects);
 app.use('/services', services);
 app.use('/docs', docs);
+app.use('/businessContactsList', businessList);
 
 // Passport User Configuration
 let UserModel = require('./db/modules/users');
