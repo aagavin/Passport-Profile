@@ -8,6 +8,7 @@
 let express = require('express');
 let router = express.Router();
 let passport = require('passport');
+let flash = require('connect-flash')
 // define user module
 let User = require('../db/modules/users').User;
 
@@ -15,12 +16,6 @@ let User = require('../db/modules/users').User;
 router.get('/', (req, res) => {
   res.render('index', {});
 });
-
-/* GET login page. */
-router.get('/', (req, res) => {
-  res.render('login', {});
-});
-
 
 /* GET register page. */
 router.get('/register', (req, res) => {
@@ -36,11 +31,9 @@ router.post('/register', (req, res) => {
 
   });
 
-  User.register(newUser,
-    req.body.password,
+  User.register(newUser, req.body.password,
     (err) => {
       if (err) { console.log('error adding new user') }
-
       return passport.authenticate('local')(req, res, () => {
         res.redirect('/');
       })
@@ -50,9 +43,8 @@ router.post('/register', (req, res) => {
 /* GET login page. */
 router.get('/login', (req, res) => {
   if(!req.user){
-
-    res.render('login', {
-      messages: req.flash('loginMessage')
+    res.render('auth/login', {
+      messages: req.flash('error')
     });
   }
   else{
@@ -64,7 +56,7 @@ router.get('/login', (req, res) => {
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/projects',
   failureRedirect: '/login',
-  failureFlash: 'bad login'
+  failureFlash: true
 }));
 
 

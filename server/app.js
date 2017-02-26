@@ -17,14 +17,13 @@ let contact = require('./routes/contact');
 let projects = require('./routes/projects');
 let services = require('./routes/services');
 let docs = require('./routes/docs');
-let businessList = require('./routes/businessContactsList');
+let businessList = require('./routes/businessContactsList')
 let app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, '/../client/public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -50,7 +49,7 @@ app.use('/contact', contact);
 app.use('/projects', projects);
 app.use('/services', services);
 app.use('/docs', docs);
-app.use('/businessContactsList', businessList);
+app.use('/businessList', businessList);
 
 // Passport User Configuration
 let UserModel = require('./db/modules/users');

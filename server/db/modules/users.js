@@ -43,7 +43,10 @@ let UserSchema = Schema(
     collection: "users"
   });
 
-let options = ({missingPasswordError: "Wrong Password"});
+let options = (
+  {missingPasswordError: "Wrong Password"},
+  {'loginMessage': "error with login"}
+  );
 
 UserSchema.plugin(passportLocalMongoose, options);
 
