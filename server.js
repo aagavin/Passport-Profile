@@ -32,8 +32,8 @@ server.on('listening', onListening);
 /**
  * Normalize a port into a number, string, or false.
  * 
- * @param {any} val 
- * @returns 
+ * @param {any} val Port as a num or string
+ * @returns {Number} port
  */
 function normalizePort(val) {
   let port = parseInt(val, 10);
@@ -51,10 +51,13 @@ function normalizePort(val) {
   return false;
 }
 
+
 /**
  * Event listener for HTTP server "error" event.
+ * 
+ * @param {any} error 
+ * @returns {undefined}
  */
-
 function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
@@ -89,5 +92,5 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
-  console.log("Server listening on "+bind+" using "+addr.family)
+  console.log("Server listening on " + bind + " using " + addr.family)
 }
