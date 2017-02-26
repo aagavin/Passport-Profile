@@ -12,31 +12,31 @@ let passport = require('passport');
 let User = require('../db/modules/users').User;
 
 /* GET home page. */
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
   res.render('index', {});
 });
 
 /* GET login page. */
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
   res.render('login', {});
 });
 
 
 /* GET register page. */
-router.get('/register', (req, res, next) => {
+router.get('/register', (req, res) => {
   res.render('register', {});
 });
 
 /* POST register page. */
-router.post('/register', (req, res, next) => {
-  u = new User({
+router.post('/register', (req, res) => {
+  let newUser = new User({
     username: req.body.username,
     email: req.body.email,
     displayName: req.body.displayName
 
   });
 
-  User.register(u,
+  User.register(newUser,
     req.body.password,
     (err) => {
       if (err) { console.log('error adding new user') }
@@ -48,8 +48,17 @@ router.post('/register', (req, res, next) => {
 });
 
 /* GET login page. */
-router.get('/login', (req, res, next) => {
-  res.render('login', {});
+router.get('/login', (req, res) => {
+  if(!req.user){
+
+    res.render('login', {
+      messages: req.flash('loginMessage')
+    });
+  }
+  else{
+    
+  }
+  
 });
 
 router.post('/login', passport.authenticate('local', {
