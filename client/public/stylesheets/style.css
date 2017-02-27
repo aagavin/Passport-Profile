@@ -107,7 +107,7 @@ body{
 .main-content{
   color: rgb(187, 187, 187) !important;
 }
-.main-content form{
+/*.main-content form{
   width: 50%;
   padding-bottom: 1em;
 }
@@ -120,7 +120,7 @@ body{
   width: 65%;
   float: right;
   display: block;
-}
+}*/
 
 .footer{
   display: block;

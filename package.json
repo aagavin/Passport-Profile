@@ -1,5 +1,5 @@
 {
-  "name": "assignment1aaronfernandes",
+  "name": "express profile with auth",
   "version": "0.0.1",
   "private": true,
   "author": {
@@ -14,10 +14,12 @@
     "@types/passport-local": "^1.0.29",
     "@types/passport-local-mongoose": "^4.0.8",
     "body-parser": "~1.15.2",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "ejs": "~2.5.2",
     "express": "~4.14.0",
+    "express-session": "^1.15.1",
     "markdown-pdf": "^7.0.0",
     "mongoose": "^4.8.1",
     "morgan": "~1.7.0",
@@ -34,6 +36,7 @@
   "devDependencies": {
     "@types/express": "^4.0.35",
     "@types/mongoose": "^4.7.6",
-    "@types/node": "^7.0.5"
+    "@types/node": "^7.0.5",
+    "eslint": "^3.16.1"
   }
 }
