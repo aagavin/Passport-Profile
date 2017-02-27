@@ -1,9 +1,12 @@
 <%- include ../partials/header.ejs %>
 
 <h1>Login to view the secreat area</h1>
-<p>
+<% if(messages!='') { %>
+<p class="bg-primary img-rounded">
+	<a href="/" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></a>
 	<%= messages %>
 </p>
+<% } %>
 <form  method="POST">
 	<div class="form-group">
 		<label for="username">Username</label>
@@ -11,7 +14,7 @@
 	</div>
 	<div class="form-group">
 		<label for="password">Password</label>
-		<input type="text" id="password" name="password">
+		<input type="password" id="password" name="password">
 	</div>
 	<div class="form-group">
 		<input type="submit" value="Login">

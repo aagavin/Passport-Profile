@@ -21,10 +21,14 @@
 		<div class="container">
 			<div class="row">
 				<div class="header col">
+					<% if(typeof displayName != 'undefined') { %>
+					<h1 class="pull-right">Hello <%= displayName %></h1>
+					<% } else { %>
 					<h1 class="pull-right">Hello, world!</h1>
+					<% } %>
 					<h1 class="pull-left">Aaron Fernandes</h1>
 					<br><br>
-					<h2>A real UNIX admin</h2>
+					<h2>A real UNIX admin <%= typeof displayName != 'undefined'%></h2>
 				</div>
 			</div>
 		</div>
@@ -35,8 +39,12 @@
 				<ul class="sidemenu">
 					<li class="nav-header"><b>HEADER</b></li>
 					<li ><a href="/">Home</a></li>
-					<li><a href="/login">Login</a></li>
+					<% if(typeof displayName != 'undefined') { %>
 					<li><a href="/businessList">businessList</a></li>
+					<li><a href="/logout">Logout</a></li>
+					<% } else { %>
+					<li><a href="/login">Login</a></li>
+					<% } %>
 					<li><a href="/projects">Projects</a></li>
 					<li><a href="/services">Services</a></li>
 					<li><a href="/contact">Contact</a></li>
