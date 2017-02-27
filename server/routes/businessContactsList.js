@@ -11,7 +11,13 @@ let router = express.Router();
 
 /* */
 router.get('/', (req, res)=>{
-	res.render('businessContactsList',{})
+  let displayName = '';
+  if(req.user){
+    displayName = req.user.displayName
+  }
+	res.render('businessContactsList',{
+    displayName: displayName
+  })
 });
 
 module.exports = router
