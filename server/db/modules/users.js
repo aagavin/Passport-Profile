@@ -1,7 +1,7 @@
 /*
   Aaron Fernandes - 300773526 
   COMP 308 - Assignment 2
-  https://circuat.herokuapp.com/
+  https://.herokuapp.com/
 
   This file sets up database information
 */
