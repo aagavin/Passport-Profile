@@ -1,0 +1,40 @@
+<%- include ../partials/header.ejs %>
+<h1>List of Business Contact </b>
+	<% if(typeof contacts != 'undefined') { %>
+	<table>
+		<tbody>
+			<thead>
+				<tr>
+					<th>
+						 Name
+					</th>
+					<th>
+						Email
+					</th>
+					<th>
+						Number
+					</th>
+					<th>
+						&nbsp;
+					</th>
+					<th>
+						&nbsp;
+					</th>
+				</tr>
+			</thead>
+		<% for(var i=0; i<contacts.length; i++) { %>
+			<tr>
+				<td><%= contacts[i].name %></td>
+				<td><%= contacts[i].email %></td>
+				<td><%= contacts[i].number %></td>
+				<td><a class="btn btn-primary" href="businessList/<%= contacts[i]._id %>" role="button">Edit</a></td>
+				<td><a class="btn btn-danger" href="businessList/delete/<%= contacts[i]._id %>" role="button">Delete</a></td>
+			</tr>
+			
+		<% } %>
+		</tbody>
+	</table>
+	<% } else { %>
+		<p>No contacts avilable</p>
+	<% } %>
+<%- include ../partials/footer.ejs %>

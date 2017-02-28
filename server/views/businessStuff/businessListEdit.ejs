@@ -1,0 +1,35 @@
+<%- include ../partials/header.ejs %>
+<h1>List of Business Contact </b>
+
+<% if(typeof contact != 'undefined') { %>
+<form method="POST" class="form-horizontal">
+<% } else { %>
+<form method="POST" action="add" class="form-horizontal">
+<% } %>
+  <div class="form-group">
+    <label for="name" class="col-sm-2 control-label">Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="name" value="<%= contact.name %>" name="name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail3" value="<%= contact.email %>" name="email">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="number" class="col-sm-2 control-label">Number</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" min="1000000000" max="9999999999" id="number" value="<%= contact.number %>" name="number">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-6 col-sm-6">
+      <button type="submit" class="btn btn-primary">Save</button>
+			<a class="btn btn-warning" href="/businessList" role="button">Cancel</a>
+    </div>
+
+  </div>
+</form>
+<%- include ../partials/footer.ejs %>
