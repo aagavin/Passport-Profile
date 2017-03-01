@@ -6,6 +6,7 @@
     "name": "Aaron Fernandes 300773526"
   },
   "scripts": {
+    "preinstall": "npm install",
     "start": "node server.js",
     "watch": "nodemon server.js"
   },
