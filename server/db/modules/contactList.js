@@ -19,7 +19,6 @@ let ContactSchema = Schema({
 	},
 	number: {
 		type: Number,
-		default: '9999999999',
 		required: 'Contact number is required'
 	},
 	email: {
