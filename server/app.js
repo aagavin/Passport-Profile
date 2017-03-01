@@ -1,3 +1,11 @@
+/*
+  Aaron Fernandes - 300773526 
+  COMP 308 - Assignment 2
+  https://passport-profile.herokuapp.com/
+
+  The file sets up the express.js
+*/
+
 let express = require('express');
 let path = require('path');
 let favicon = require('serve-favicon');

@@ -1,7 +1,7 @@
 /*
   Aaron Fernandes - 300773526 
   COMP 308 - Assignment 2
-  https://circuat.herokuapp.com/
+  https://passport-profile.herokuapp.com/
 
   This file determines the about route
 */
@@ -11,7 +11,6 @@ let router = express.Router();
 
 /* GET about page */
 router.get('/', function(req, res, next) {
-  // res.send('respond with a resource');
   res.render('about', {});
 });
 

@@ -1,7 +1,7 @@
 /*
   Aaron Fernandes - 300773526 
-  COMP 308 - Assignment 1
-  https://circuat.herokuapp.com/
+  COMP 308 - Assignment 2
+  https://passport-profile.herokuapp.com/
 
   This file determines the contact route, and handles 
   the post request for form handling
@@ -27,6 +27,7 @@ router.get('/all', (req, res)=>{
 
 });
 
+/* Add new */
 router.post('/', (req, res)=>{
 
   let email = new EmailList({

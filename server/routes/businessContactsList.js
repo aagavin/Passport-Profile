@@ -1,17 +1,25 @@
 /*
   Aaron Fernandes - 300773526 
   COMP 308 - Assignment 2
-  https://***.herokuapp.com/
+  https://passport-profile.herokuapp.com/
 
-  This file determines the about route
+  This file determines the business route
 */
+
 
 let express = require('express');
 let mongoose = require('mongoose')
 let router = express.Router();
 let contacts = require('../db/modules/contactList').ContactList;
 
-
+/**
+ * forces a user to be login
+ * 
+ * @param {any} req 
+ * @param {any} res 
+ * @param {any} next 
+ * @returns {undefined}
+ */
 let requireAuth = (req, res, next)=>{
   // check if the user is logged in
   if(!req.isAuthenticated()) {
@@ -19,7 +27,11 @@ let requireAuth = (req, res, next)=>{
   }
   next();
 }
-/* */
+
+
+/*
+  Shows the business contact list
+*/
 router.get('/', requireAuth, (req, res)=>{
 
     displayName = req.user.displayName;
@@ -34,7 +46,9 @@ router.get('/', requireAuth, (req, res)=>{
 
 });
 
-/* */
+/*
+  Edit a specific contact
+*/
 router.get('/:id', requireAuth, (req, res)=>{
   try{
     
@@ -53,6 +67,9 @@ router.get('/:id', requireAuth, (req, res)=>{
   }
 });
 
+/*
+  Updates a specific contact or add a new one
+*/
 router.post('/:id', requireAuth, (req, res)=>{
   try{
     let id = mongoose.Types.ObjectId.createFromHexString(req.params.id);
@@ -88,7 +105,9 @@ router.post('/:id', requireAuth, (req, res)=>{
   }
 });
 
-
+/*
+  Remove a contact by id
+*/
 router.get('/delete/:id', requireAuth, (req, res)=>{
   try{
     let id = mongoose.Types.ObjectId.createFromHexString(req.params.id);

@@ -1,4 +1,11 @@
 #!/usr/bin/env node
+/*
+  Aaron Fernandes - 300773526 
+  COMP 308 - Assignment 2
+  https://passport-profile.herokuapp.com/
+
+  This file determines the server config
+*/
 
 /**
  * Module dependencies.
