@@ -38,6 +38,9 @@ let UserSchema = Schema(
     updated: {
       type: Date,
       default: Date.now
+    },
+    gitHubId:{
+      type: Number
     }
   },
   {

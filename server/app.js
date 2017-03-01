@@ -12,11 +12,16 @@ let favicon = require('serve-favicon');
 let logger = require('morgan');
 let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
+// 
+// User Configuration
+let UserModel = require('./db/modules/users');
+let User = UserModel.User; // alias for the User Model - User object
 // modules for auth
 let session = require('express-session');
 let passport = require('passport');
 let passportLocal = require('passport-local');
 let LocalStrategy = passportLocal.Strategy;
+let GitHubStrategy = require('passport-github2').Strategy;
 let flash = require('connect-flash'); // displays errors / login messages
 
 let index = require('./routes/index');
@@ -25,9 +30,14 @@ let contact = require('./routes/contact');
 let projects = require('./routes/projects');
 let services = require('./routes/services');
 let docs = require('./routes/docs');
-let businessList = require('./routes/businessContactsList')
+let businessList = require('./routes/businessContactsList');
+let auth = require('./routes/auth');
+
 let app = express();
 
+// set up github auth 
+let GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID; //"36fcfda9695aaeb22ffa";
+let GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET //"39ec60eb9ef9a60a162672ab492a5b210b622bfc";
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -58,14 +68,43 @@ app.use('/projects', projects);
 app.use('/services', services);
 app.use('/docs', docs);
 app.use('/businessList', businessList);
+app.use('/auth', auth);
 
-// Passport User Configuration
-let UserModel = require('./db/modules/users');
-let User = UserModel.User; // alias for the User Model - User object
-passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+passport.use(User.createStrategy());
+let gitHubStrategy = new GitHubStrategy(
+  {
+    clientID: GITHUB_CLIENT_ID,
+    clientSecret: GITHUB_CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/github/callback"
+  },
+  (accessToken, refreshToken, profile, done)=>{
+    process.nextTick(()=>{
+      User.findOne({'gitHubId':profile.id}, (err, user)=>{
+        if(err || user == null){
+          console.log("No user found\nAdded new user");
+          let newGitHubUser = new User({
+            username: profile['_json']['login'],
+            email: profile['_json']['email']==null ? 'noGitHubEmail@example.com': profile['_json']['email'],
+            displayName: profile['_json']['name'],
+            gitHubId: profile.id
+          });
 
+          User.register(newGitHubUser, profile.id,
+          (err)=>{
+            if(err) { console.log(err) }
+            done(err, newGitHubUser);
+          });
+        }
+        else{
+          done(err, user);
+        }
+      })
+    })
+  }
+);
+passport.use(gitHubStrategy);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   let err = new Error('Not Found');

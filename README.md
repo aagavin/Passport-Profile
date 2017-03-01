@@ -9,7 +9,7 @@ EXPRESS  PPORTFOLIO SITE
 
 
 ## Debug
-`DEBUG=1assignment:* npm start`
+`DEBUG=2assignment:* npm start`
 
 ## Prod
 `npm start`
