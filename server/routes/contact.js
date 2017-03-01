@@ -27,6 +27,7 @@ router.get('/all', (req, res)=>{
 
 });
 
+/* Add new */
 router.post('/', (req, res)=>{
 
   let email = new EmailList({
