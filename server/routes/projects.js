@@ -1,7 +1,7 @@
 /*
   Aaron Fernandes - 300773526 
-  COMP 308 - Assignment 1
-  https://circuat.herokuapp.com/
+  COMP 308 - Assignment 2
+  https://passport-profile.herokuapp.com/
 
   This file determines the project route and
   stores the projects object 

@@ -1,9 +1,10 @@
 /*
   Aaron Fernandes - 300773526 
   COMP 308 - Assignment 2
-  https://circuat.herokuapp.com/
+  https://passport-profile.herokuapp.com/
 
-  This file sets up database information
+  This file configs the email list Schema
+
 */
 
 let emailListSchema = require("mongoose").Schema({

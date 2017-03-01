@@ -1,7 +1,7 @@
 /*
   Aaron Fernandes - 300773526 
-  COMP 308 - Assignment 1
-  https://circuat.herokuapp.com/
+  COMP 308 - Assignment 2
+  https://passport-profile.herokuapp.com/
 
   Uses the the typeIt jQuery plugin (http://macarthur.me/typeit/)
   Also sets the class on the sidemenu

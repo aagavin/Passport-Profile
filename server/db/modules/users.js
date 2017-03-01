@@ -1,9 +1,10 @@
 /*
   Aaron Fernandes - 300773526 
   COMP 308 - Assignment 2
-  https://.herokuapp.com/
+  https://passport-profile.herokuapp.com/
 
-  This file sets up database information
+
+  This file sets up the users Schema
 */
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
