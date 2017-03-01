@@ -77,7 +77,7 @@ let gitHubStrategy = new GitHubStrategy(
   {
     clientID: GITHUB_CLIENT_ID,
     clientSecret: GITHUB_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/github/callback"
+    callbackURL: "https://passport-profile.herokuapp.com/auth/github/callback"
   },
   (accessToken, refreshToken, profile, done)=>{
     process.nextTick(()=>{
