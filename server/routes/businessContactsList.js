@@ -37,7 +37,9 @@ router.get('/', requireAuth, (req, res)=>{
 /* */
 router.get('/:id', requireAuth, (req, res)=>{
   try{
+    
     let id = mongoose.Types.ObjectId.createFromHexString(req.params.id);
+    console.log('**********')
     contacts.findById(id, (error, contact)=>{
       res.render('businessStuff/businessListEdit',{
         contact: contact
@@ -46,7 +48,8 @@ router.get('/:id', requireAuth, (req, res)=>{
   }
   catch(err){
     console.log(err);
-    res.send('error');
+    let emptyContact = new contacts({});
+    res.render('businessStuff/businessListEdit',{contact: undefined})
   }
 });
 
@@ -69,32 +72,21 @@ router.post('/:id', requireAuth, (req, res)=>{
   }
   catch(err){
     console.log(err);
-    res.send('error');
+    let contact = new contacts({
+      name: req.body.name,
+      number: req.body.number,
+      email: req.body.email
+    });
+
+    contacts.create(contact, (err, contact)=>{
+      if(err){
+        console.log(err)
+        res.send(err)
+      }
+      res.redirect('/businessList')
+    })
   }
 });
-
-// TODO FIX ADD 
-router.get('/add', requireAuth, (req, res)=>{
-  
-  res.send('sdfsd')
-  // res.render('businessStuff/businessListEdit')
-});
-
-router.post('/add', requireAuth, (req, res)=>{
-  let contact = new contacts({
-    name: req.body.name,
-    number: req.body.number,
-    email: req.body.email
-  });
-
-  contacts.create(contact, (err, contact)=>{
-    if(err){
-      console.log(err)
-      res.send(err)
-    }
-    res.redirect('/businessList')
-  })
-})
 
 
 router.get('/delete/:id', requireAuth, (req, res)=>{
@@ -111,7 +103,7 @@ router.get('/delete/:id', requireAuth, (req, res)=>{
   }
   catch(err){
     console.log(err);
-    res.send('error');
+    res.send(err);
   }
 })
 module.exports = router
