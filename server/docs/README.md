@@ -43,8 +43,6 @@ This project uses Bootstrap to get this awesome theme
 A fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.
 jQuery is used for for other frameworks such as BOOTSTRAP and TypeIt, Listed below
 
-### [TypeIt](http://macarthur.me/typeit/)
-jQuery plugin that creates the typing effect used on this site
 
 # Style Guild
 
@@ -67,6 +65,10 @@ It can be download from `/stylesheets/fonts/Fixedsys500c.woff`.
 # Added features
 This are a few extra features that have been added to this project
 
-* Working contact form: [/contact](https://circuat.herokuapp.com/contact)
-* ^ View Database: [/contact/all](https://circuat.herokuapp.com/contact/all)
-* This external documentation: [/docs](https://circuat.herokuapp.com/docs)
+* **NEW** Added GitHub OAUTH Strategy (Login with github.com)
+* **NEW** Flash Messages to appear on the Login
+* **NEW** Registration View for additional users to access the secure area
+* **NEW** Display the logged in user’s name in the Nav B
+* Working contact form: [/contact](https://passport-profile.herokuapp.com/contact)
+* View Database: [/contact/all](https://passport-profile.herokuapp.com/contact/all)
+* This external documentation: [/docs](https://passport-profile.herokuapp.com/docs)
